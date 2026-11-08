@@ -3,9 +3,14 @@
 Purpose of this repo is to explore container development dev cycle
 from the perspective of a windows desktop user.
 
-This should simulate an app that is intended for eventual enterprise
+The larger context is an app that is intended for eventual enterprise
 deployment, using CI that is not present here, but inferred
-as already existing
+as already existing.
+
+The goal is to give the dev fast local turn-around of development without waiting 1-2 minutes for typical CI/CD cycles after every commit.
+
+This workspace was developed with ms-windows in mind, but theoretically it should
+work on linux as well.
 
 ## Assumptions
 It is possible to develop using other methods. 
