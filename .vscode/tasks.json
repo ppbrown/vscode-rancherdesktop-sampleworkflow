@@ -13,9 +13,9 @@
     },
     {
       "label": "k-app: Open in browser",
-      "detail": "Open http://localhost:8080 (needs Start dev running).",
+      "detail": "Open http://k-app.localhost (after either deploy).",
       "type": "shell",
-      "command": "Start-Process http://localhost:8080",
+      "command": "Start-Process http://k-app.localhost",
       "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-Command"] } },
       "problemMatcher": [],
       "presentation": { "reveal": "never" }

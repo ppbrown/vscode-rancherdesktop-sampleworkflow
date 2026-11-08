@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: k-app
+  labels:
+    app.kubernetes.io/name: k-app
+spec:
+  # Locally this is Rancher Desktop's Traefik; *.localhost resolves to your PC.
+  # A real environment would override the host (and add TLS).
+  rules:
+    - host: k-app.localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: k-app
+                port:
+                  name: http

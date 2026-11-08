@@ -30,13 +30,13 @@ Run it from the buttons on the VS Code status bar (bottom left of the window fra
 
 | Button | What it does |
 |---|---|
-| **Continuous Deploy** | Builds, deploys and syncs `app/` into the cluster, with the app on http://localhost:8080. Saving a file in `app/` copies it into the running container and restarts the app. Edits to the `Dockerfile` or `k8s/` are not picked up until you stop and restart it. What runs is the first build plus synced files, not a fresh image, so check with **Deploy Once** before trusting a result. Stop with the trash icon on its terminal panel. |
+| **Continuous Deploy** | Builds, deploys and syncs `app/` into the cluster, with the app on http://k-app.localhost (and http://localhost:8080). Saving a file in `app/` copies it into the running container and restarts the app. Edits to the `Dockerfile` or `k8s/` are not picked up until you stop and restart it. What runs is the first build plus synced files, not a fresh image, so check with **Deploy Once** before trusting a result. Stop with the trash icon on its terminal panel. |
 | **Deploy Once** | One-off build and deploy, as CI would do. No sync. |
-| **Open App** | Opens http://localhost:8080 (while Continuous Deploy is running). |
+| **Open App** | Opens http://k-app.localhost, after either deploy button. |
 | **DevSpace UI** | Opens DevSpace's web page: logs, a shell in the pod, ports. |
 | **Remove** | Deletes k-app from the cluster. |
 
 Everything goes into the `k-app` namespace. The buttons and tasks live in `.vscode/`.
 
-Layout: `Dockerfile` (non-root image), `k8s/` (plain manifests CI would apply),
+Layout: `Dockerfile` (non-root image), `k8s/` (plain manifests CI would apply, including an Ingress on `k-app.localhost` via Rancher Desktop's Traefik),
 `devspace.yaml` (local dev loop only).

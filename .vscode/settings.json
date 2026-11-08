@@ -3,7 +3,7 @@
   "VsCodeTaskButtons.tasks": [
     { "label": "$(play) Continuous Deploy", "task": "k-app: Start dev", "tooltip": "Start dev loop (build, deploy, sync, localhost:8080)" },
     { "label": "$(cloud-upload) Deploy Once", "task": "k-app: Deploy", "tooltip": "Build and deploy without dev sync" },
-    { "label": "$(globe) Open App", "task": "k-app: Open in browser", "tooltip": "Open http://localhost:8080" },
+    { "label": "$(globe) Open App", "task": "k-app: Open in browser", "tooltip": "Open http://k-app.localhost" },
     { "label": "$(dashboard) DevSpace UI", "task": "k-app: DevSpace UI", "tooltip": "Open DevSpace UI in the browser" },
     { "label": "$(trash) Remove", "task": "k-app: Remove", "tooltip": "Remove k-app from the cluster", "color": "warning" }
   ]
