@@ -13,7 +13,7 @@ deployments:
   k-app:
     kubectl:
       manifests:
-        - k8s/
+        - devspace-k8s/
 
 dev:
   k-app:
