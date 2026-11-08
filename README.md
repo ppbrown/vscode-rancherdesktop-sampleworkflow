@@ -7,11 +7,15 @@ This should simulate an app that is intended for eventual enterprise
 deployment, using CI that is not present here, but inferred
 as already existing
 
-Local dev should take place using rancher-desktop+cluster that
-is already installed and working
+## Assumptions
+It is possible to develop using other methods. 
+The instructions below assume you are developing under MS-Windows with the following tools:
 
-initial prototype should use devspace installed natively on windows
-presumed already installed. (or use [install-devspace.ps1](install-devspace.ps1) )
+* Rancher Desktop installed
+* VS Code
+  * Kubernetes extension installed
+  * "Task Buttons" extension installed
+* "DevSpace" installed ( Can use [install-devspace.ps1](install-devspace.ps1) )
 
 
 ## Test app
@@ -20,13 +24,19 @@ presumed already installed. (or use [install-devspace.ps1](install-devspace.ps1)
 `/` returns a JSON greeting/version/hostname, `/healthz` and `/readyz` are probes.
 Config via env: `GREETING`, `APP_VERSION`, `PORT`, `LOG_LEVEL`.
 
-```powershell
-devspace use namespace k-app   # once; or pass -n k-app
-devspace dev                   # build, deploy, sync ./app, forward localhost:8080
-                               # edits to app/ restart the container automatically
-devspace deploy                # plain build + deploy (what CI would do)
-devspace purge                 # remove it
-```
+Run it from the buttons on the VS Code status bar (bottom left of the window frame). 
+
+(  ▶ Dev, 🌐 Open, ()UI, ()Deploy and 🗑 Remove )
+
+| Button | What it does |
+|---|---|
+| **Continuous Deploy** | Builds, deploys and syncs `app/` into the cluster, with the app on http://localhost:8080. Saving a file in `app/` copies it into the running container and restarts the app. Edits to the `Dockerfile` or `k8s/` are not picked up until you stop and restart it. What runs is the first build plus synced files, not a fresh image, so check with **Deploy Once** before trusting a result. Stop with the trash icon on its terminal panel. |
+| **Deploy Once** | One-off build and deploy, as CI would do. No sync. |
+| **Open App** | Opens http://localhost:8080 (while Continuous Deploy is running). |
+| **DevSpace UI** | Opens DevSpace's web page: logs, a shell in the pod, ports. |
+| **Remove** | Deletes k-app from the cluster. |
+
+Everything goes into the `k-app` namespace. The buttons and tasks live in `.vscode/`.
 
 Layout: `Dockerfile` (non-root image), `k8s/` (plain manifests CI would apply),
 `devspace.yaml` (local dev loop only).

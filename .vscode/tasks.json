@@ -1,0 +1,52 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "k-app: Start dev",
+      "detail": "Build, deploy, sync ./app and forward localhost:8080. Edits restart the app.",
+      "type": "process",
+      "command": "devspace",
+      "args": ["dev", "-n", "k-app"],
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "k-app: Open in browser",
+      "detail": "Open http://localhost:8080 (needs Start dev running).",
+      "type": "shell",
+      "command": "Start-Process http://localhost:8080",
+      "options": { "shell": { "executable": "powershell.exe", "args": ["-NoProfile", "-Command"] } },
+      "problemMatcher": [],
+      "presentation": { "reveal": "never" }
+    },
+    {
+      "label": "k-app: DevSpace UI",
+      "detail": "Open DevSpace's browser page with logs, terminal and ports.",
+      "type": "process",
+      "command": "devspace",
+      "args": ["ui", "-n", "k-app"],
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "silent", "panel": "dedicated" }
+    },
+    {
+      "label": "k-app: Deploy",
+      "detail": "Plain build + deploy, as CI would do. No sync.",
+      "type": "process",
+      "command": "devspace",
+      "args": ["deploy", "-n", "k-app"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+    },
+    {
+      "label": "k-app: Remove",
+      "detail": "Delete everything k-app deployed to the cluster.",
+      "type": "process",
+      "command": "devspace",
+      "args": ["purge", "-n", "k-app"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+    }
+  ]
+}
