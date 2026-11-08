@@ -1,0 +1,39 @@
+version: v2beta1
+name: k-app
+
+images:
+  k-app:
+    image: k-app
+    dockerfile: ./Dockerfile
+    # Local dev: don't push to the real registry. (DevSpace may still spin up
+    # its own in-cluster helper registry to move the image in.) CI pushes instead.
+    skipPush: true
+
+deployments:
+  k-app:
+    kubectl:
+      manifests:
+        - k8s/
+
+dev:
+  k-app:
+    imageSelector: k-app
+    command: ["python", "main.py"]
+    ports:
+      - port: "8080"
+    sync:
+      - path: ./app:/app
+        excludePaths:
+          - __pycache__/
+        onUpload:
+          restartContainer: true
+    logs: {}
+    # The restart helper writes to /.devspace, which the non-root user
+    # can't create. Give dev mode a writable emptyDir there (dev only).
+    patches:
+      - op: add
+        path: spec.volumes
+        value: [{ name: devspace-helper, emptyDir: {} }]
+      - op: add
+        path: spec.containers.name=k-app.volumeMounts
+        value: [{ name: devspace-helper, mountPath: /.devspace }]
