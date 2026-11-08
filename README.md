@@ -1,26 +1,27 @@
 # k-app
 
-Purpose of this repo is to explore container development dev cycle
+The purpose of this repo is to showcase a sample container development dev cycle
 from the perspective of a windows desktop user.
 
-The larger context is an app that is intended for eventual enterprise
-deployment, using CI that is not present here, but inferred
-as already existing.
+The larger context is a containerized app that is intended for eventual enterprise
+deployment, using CI that you would add to suit your own environments.
+The key principle is that the workflow showcased here will not interfere with any kind of enterprise CI
+that would also be present in the repo.
 
-The goal is to give the dev fast local turn-around of development without waiting 1-2 minutes for typical CI/CD cycles after every commit.
+The goal is to give a developer fast local turn-around of development without waiting 1-2 minutes for typical CI/CD cycles after every commit.
 
-This workspace was developed with ms-windows in mind, but theoretically it should
+This workspace was developed on ms-windows, but theoretically it should
 work on linux as well.
 
 ## Assumptions
 It is possible to develop using other methods. 
-The instructions below assume you are developing under MS-Windows with the following tools:
+The instructions below assume you are developing with the following tools:
 
 * Rancher Desktop installed
 * VS Code
   * Kubernetes extension installed
   * "Task Buttons" extension installed
-* "DevSpace" installed ( Can use [install-devspace.ps1](install-devspace.ps1) )
+* [DevSpace](https://www.devspace.sh/) installed ( Can use [install-devspace.ps1](install-devspace.ps1) on Windows, or [install-devspace.sh](install-devspace.sh) on Linux )
 
 
 ## The sample app
