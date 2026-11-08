@@ -17,7 +17,7 @@ work on linux as well.
 It is possible to develop using other methods. 
 The instructions below assume you are developing with the following tools:
 
-* Rancher Desktop installed
+* Rancher Desktop installed, using dockerd (moby) with Kubernetes enabled ( Can use [install-rancher.ps1](install-rancher.ps1) on Windows, or [install-rancher.sh](install-rancher.sh) on Linux )
 * VS Code
   * Kubernetes extension installed
   * "Task Buttons" extension installed
