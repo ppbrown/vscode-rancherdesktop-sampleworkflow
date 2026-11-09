@@ -1,4 +1,4 @@
-# k-app
+# VS Code + Rancher Desktop + DevSpace integration
 
 The purpose of this repo is to showcase a sample container development dev cycle
 from the perspective of a windows desktop user.
